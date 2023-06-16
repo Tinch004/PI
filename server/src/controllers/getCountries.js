@@ -10,7 +10,7 @@ const getCountriesApi = async (req, res) => {
         const country = {
           id: pais.cca3,
           name: pais.name.common,
-          flagImage: pais.flags.png?pais.flags.png:'Sin Bander',
+          flagImage: pais.flags.png?pais.flags.png:'Sin Bandera',
           continents: pais.continents[0],
           capital: pais.capital ? pais.capital[0] : "No tiene capital",
           subregion: pais.subregion,
@@ -27,7 +27,7 @@ const getCountriesApi = async (req, res) => {
           defaults: {
               
             name: pais.name.common,
-            flagImage: pais.flags.png?pais.flags.png:'Sin Bander',
+            flagImage: pais.flags.png?pais.flags.png:'Sin Bandera',
             continents: pais.continents[0],
             capital: pais.capital ? pais.capital[0] : "No tiene capital",
             subregion: pais.subregion,
