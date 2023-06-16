@@ -4,9 +4,10 @@ import CountryCard from "./CountryCard";
 import { getCountries } from "../redux/actions";
 
 const Home = ({ countries, getAllCountries }) => {
+
   useEffect(() => {
     getAllCountries();
-  }, [getAllCountries]);
+  }, []);
 
   return (
     <div>

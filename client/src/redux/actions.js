@@ -12,10 +12,9 @@ export const getCountries = () => {
     try {
       const response = await axios.get('http://localhost:3001/countries');
       const countries = response.data;
-      
       dispatch({ type: GET_COUNTRIES, payload: countries });
     } catch (error) {
-      console.log(error);
+      console.log('ENTRA ACA', error);
     }
   };
 };

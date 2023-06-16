@@ -1,13 +1,20 @@
 import {GET_COUNTRIES} from "./actions";
 
-const initialState = [];
+const initialState = {
+  countries: [],
+};
 
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_COUNTRIES:
-      return action.payload;
-  
+    case GET_COUNTRIES: {
+      state = {
+        ...state,
+        countries: action.payload,
+      }
+      return state;
+    }
+
     default:
       return state;
   }
