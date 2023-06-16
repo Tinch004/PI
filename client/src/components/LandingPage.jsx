@@ -5,7 +5,7 @@ const LandingPage = () => {
     <div>
       <h1>Landing Page</h1>
 
-      <Link to="/home">Go to Home Page</Link>
+      <Link to="/home"><button>Go to Home Page</button></Link>
     </div>
   );
 };

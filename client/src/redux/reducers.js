@@ -1,8 +1,6 @@
 import {GET_COUNTRIES} from "./actions";
 
-const initialState = {
-  countries: [],
-};
+const initialState = [];
 
 
 const reducer = (state = initialState, action) => {

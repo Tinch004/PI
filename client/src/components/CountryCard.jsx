@@ -1,15 +1,13 @@
+/* eslint-disable react/prop-types */
 
 
-import React from "react";
+const CountryCard = ({  name, flagImage, continents }) => {
 
-
-const CountryCard = ({  name, flageImage, continents }) => {
- 
   return (
     <div>
-      <img src={flageImage} />
-      <p>{name}</p>
-      <h4>{continents}</h4>
+      <img src={flagImage} />
+      <h4>{name}</h4>
+      <p>{continents}</p>
     </div>
   );
 };

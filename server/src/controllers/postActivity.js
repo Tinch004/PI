@@ -7,7 +7,7 @@ const postActivity = async (req, res)=>{
 
     // Crear la actividad turística en la base de datos
     if(!name||!difficulty||!duration||!season){
-        return res.status(404).json("Faltan Datos") 
+        return res.status(400).json("Faltan Datos") 
       }
     const findOne = await Activity.findOne({
       where:{
@@ -16,7 +16,7 @@ const postActivity = async (req, res)=>{
     })
     
     if(findOne){
-     return res.status(200).json('Ya existe esta actividad')
+     return res.status(400).json('Ya existe esta actividad')
     }
    
 
