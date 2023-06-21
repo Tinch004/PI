@@ -35,10 +35,14 @@ const getCountriesApi = async (req, res) => {
             poblation: pais.population,
           }
 
-      })
+      }
+      )
+
         return country;
       })
     );
+
+
 
     return countries;
 

@@ -1,34 +1,48 @@
-/* eslint-disable react/prop-types */
-import { useEffect } from "react";
-import { connect } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCountries, searchCountries } from "../redux/actions";
 import Cards from "./Cards";
+import Navbar from "./NavBar";
 
-import { getCountries } from "../redux/actions";
 
-const Home = ({ countries, getAllCountries }) => {
+
+const Home = () => {
+  const dispatch = useDispatch();
+  const countries = useSelector((state) => state.countries);
+  const searchResults = useSelector((state) => state.searchResults);
+  const [filteredCountries, setFilteredCountries] = useState([]);
+  
 
   useEffect(() => {
-    getAllCountries();
-  }, []);
+    dispatch(getCountries());
+    handleSearch(""); // Mostrar todos los países al cargar la página
+  }, [dispatch]);
 
+  const handleSearch = async (searchQuery) => {
+    try {
+      if (searchQuery.trim() === "") {
+        setFilteredCountries(countries); // Mostrar todos los países
+      } else {
+       dispatch(searchCountries(searchQuery));
+        let filteredResults = searchResults; // Mostrar resultados de búsqueda
+  
+      
+      }
+    } catch (error) {
+      console.log("Error al buscar", error);
+    }
+  };
 
   return (
     <div>
-     <Cards countries={countries}/>
+      
+      <Navbar onSearch={handleSearch} />
+      <div>
+
+        <Cards countries={filteredCountries} />
+      </div>
     </div>
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    countries: state.countries,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getAllCountries: () => dispatch(getCountries()),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;

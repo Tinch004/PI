@@ -6,7 +6,7 @@ const postActivity = async (req, res)=>{
     const { name, difficulty, duration, season, countries } = req.body;
 
     // Crear la actividad turística en la base de datos
-    if(!name||!difficulty||!duration||!season){
+    if(!name||!difficulty||!duration||!season|!countries){
         return res.status(400).json("Faltan Datos") 
       }
     const findOne = await Activity.findOne({
