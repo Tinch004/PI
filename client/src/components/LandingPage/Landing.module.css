@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+}
+  
+  .landing {
+    background-image: url("fondo.gif");
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .button {
+    padding: 10px 10px;
+    height: 100px;
+    width: 200px;
+    background-color: #4287f5;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 50px;
+    cursor: pointer;
+    margin-bottom: 300px;
+    
+  }
+  
+  .button:hover {
+    background-color: #276bd8;}
+  

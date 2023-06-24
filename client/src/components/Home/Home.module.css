@@ -1,0 +1,56 @@
+.home {
+  background-image: url("countries.png");
+ 
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: rgba(0, 0, 0, 0.548);
+   width: 100%;
+   overflow: hidden; 
+}
+
+.container {
+  flex: 1;
+  margin-top: 20px;
+}
+.space{
+  padding-bottom: 50px;
+  background: none;
+}
+.filters {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.filter {
+  margin-right: 20px;
+}
+
+.label {
+  margin-right: 10px;
+}
+
+.select {
+  padding: 5px;
+}
+.label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.select {
+  padding: 5px;
+  font-size: 14px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 0 20px;
+}
+  

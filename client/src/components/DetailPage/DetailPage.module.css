@@ -1,0 +1,103 @@
+.detailPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Cambiado a min-height en lugar de height */
+  background-color: #f5f5f5;
+  padding: 20px; /* Agregado espacio de relleno para separar del borde de la página */
+  padding-left: 200px;
+
+
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.countryInfo {
+  flex: 1;
+  margin-right: 40px;
+}
+
+.countryName {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.countryInfoItem {
+  margin-bottom: 20px;
+}
+
+.flagContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%; /* Cambiado a max-width en lugar de width */
+}
+
+.flagImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Ajusta la imagen dentro del contenedor sin estirarla */
+  padding-right: 200px;
+}
+.activitiesContainer {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 400px;
+  margin-left: 40px;
+  padding-left: 40px;
+  border-left: 1px solid #ccc;
+}
+
+.activities {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.activityItem {
+  margin-bottom: 10px;
+}
+
+.activityName {
+  margin-bottom: 5px;
+}
+
+.activityDetails {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.activityDetails h3 {
+  margin-right: 20px;
+  margin-bottom: 5px;
+}
+
+.homeLink {
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+.homeButton {
+  padding: 10px 20px;
+  background-color: #4287f5;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
+  
+}
+
+.homeButton:hover {
+  background-color: #276bd8;
+}

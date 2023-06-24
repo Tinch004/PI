@@ -1,0 +1,55 @@
+.container {
+  position: relative;
+  cursor: pointer;
+}
+
+.card {
+  background-color: #fff;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  transition: transform 0.2s ease;
+  height: 300px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+  color: #333;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #777;
+}
+
+.navlink {
+  text-decoration: none;
+}
+
+/* Estilos adicionales para personalizar la apariencia */
+
+.container {
+  margin-bottom: 20px;
+}
+
+.card:hover h3 {
+  color: #e91e63;
+}
+
+.card:hover p {
+  color: #555;
+}

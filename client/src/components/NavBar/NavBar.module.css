@@ -1,0 +1,79 @@
+.navbar {
+  width: 100%;
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+.navbar__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ 
+  margin: 0 auto;
+}
+
+
+.navbar__button {
+  padding: 5px 10px;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.actividad {
+  margin-top: 20px;
+  padding: 12px 20px;
+  background-color: #4287f5;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  margin-left: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 200px;
+  text-align: center; }
+
+.actividad:hover {
+  background-color: #276bd8;
+  cursor: pointer;
+}
+/* Agregar estilos para ocupar todo el ancho */
+body {
+  margin: 0;
+}
+
+.navbar__input{
+  display: flex;
+    z-index: 3;
+    min-height: 44px;
+    background: #dbdbdb;
+    border: 1px solid #8d9196;
+    box-shadow: none;
+    border-radius: 24px;
+    margin: 0 auto;
+    width: 638px;
+    width: auto;
+    max-width: 584px;
+}
+
+.navbar__input button{
+  background: none;
+  border: none;
+  
+}
+
+.navbar__input button:hover{
+box-shadow: #333;
+cursor: pointer;
+
+}
+.navbar__input input{
+  background: none;
+  border: none;
+  outline: none;
+  width: 638px;
+
+}
+.navbar__input div{
+  width: 20px;
+}
+

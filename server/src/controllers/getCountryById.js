@@ -1,6 +1,6 @@
 const axios = require ('axios')
 
-const {Country} = require('../db');
+const {Country, Activity} = require('../db');
 
 
 
@@ -12,7 +12,8 @@ const getCountryById = async (req, res) => {
     const countryById = await Country.findOne({
       where: {
         id: id
-      }
+      },
+      include: [Activity]
     });
 
     if (countryById) {

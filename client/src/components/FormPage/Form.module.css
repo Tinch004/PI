@@ -1,0 +1,82 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url(".././Home/countries.png");
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.404);
+}
+
+.createActivityForm {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  padding-right: 35px;
+  border-radius: 5px;
+  box-shadow: black;
+}
+
+.checkboxContainer {
+  max-height: 200px; /* Altura máxima del contenedor de los checkboxes */
+  overflow-y: auto; /* Habilitar el scroll vertical */
+  display:grid;
+  height: 100px;
+}
+
+.formLabel {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.formInput {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+}
+
+.submitButton {
+  margin-top: 20px;
+  padding: 12px 20px;
+  background-color: #4287f5;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}
+
+.submitButton:hover {
+  background-color: #276bd8;
+}
+
+.homeButton {
+  margin-top: 10px;
+  padding: 12px 20px;
+  background-color: #4287f5;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}
+
+.homeButton:hover {
+  background-color: #276bd8;
+}

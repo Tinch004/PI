@@ -6,11 +6,11 @@ const getCountryByName = async (req, res) => {
   try {
     const { name } = req.query;
 
-    if (!name) {
-      res.status(400).json({ message: 'El parámetro "name" es requerido' });
+    
+if (name==='') {
+      res.status(200).json(Country);
       return;
     }
-
     const countries = await Country.findAll({
       where: {
         name: {
