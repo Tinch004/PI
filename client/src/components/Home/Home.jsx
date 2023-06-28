@@ -49,7 +49,7 @@ const Home = () => {
       if (filters.activity) {
         await dispatch(filterByActivity(filters.activity, filter, countries));
       }
-      console.log(filter);
+    
 
       await dispatch(sortAction(filters.sort));
       await dispatch(filterByContinent(event.target.value));

@@ -21,7 +21,7 @@ const Detail = () => {
     });
   }, [id]);
 
-console.log(countryDetail);
+
   
 
   if (countryDetail.length===0) {

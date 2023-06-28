@@ -80,33 +80,46 @@ const CreateActivityForm = () => {
       errors.duration = "Duration must be less than or equal to 1000";
       valid = false;
     }
+    if(!activityData.countries.length){
+      errors.countries= 'You must select a country at least'
+      valid= false
+    }
 
     setValidationErrors(errors);
     return valid;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (validateForm()) {
-      dispatch(createActivity(activityData));
-      dispatch(filterByActivity(activityData));
-      alert("Actividad creada correctamente");
-
-      setActivityData({
-        name: "",
-        difficulty: 1,
-        duration: 0,
-        season: "Verano",
-        countries: [],
-      });
-      setValidationErrors({
-        name: "",
-        difficulty: "",
-        duration: "",
-      });
+      try {
+        const response = await dispatch(createActivity(activityData));
+        if (response?.error) {
+          alert(response.error);
+        } else {
+          await dispatch(filterByActivity(activityData));
+          alert("Actividad creada correctamente");
+  
+          setActivityData({
+            name: "",
+            difficulty: 1,
+            duration: 0,
+            season: "Verano",
+            countries: [],
+          });
+          setValidationErrors({
+            name: "",
+            difficulty: "",
+            duration: "",
+          });
+        }
+      } catch (error) {
+        console.log(error);
+        alert("Error al crear la actividad");
+      }
     } else {
-      alert("Error al crear la actividad");
+      alert("Error en la validación de datos");
     }
   };
 
@@ -202,7 +215,7 @@ const CreateActivityForm = () => {
           )}
         </label>
 
-        <button type="submit" className={styles.submitButton}>
+        <button type="submit" className={styles.submitButton}> 
           Create Activity
         </button>
         <NavLink to="/home">

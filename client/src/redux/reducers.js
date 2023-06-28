@@ -60,7 +60,7 @@ const reducer = (state = initialState, action) => {
         },
       };
     case FILTER_BY_ACTIVITY:
-      console.log(action.payload);
+
       return {
         ...state,
         filter: action.payload,

@@ -1,59 +1,63 @@
-const {Activity} = require('../db')
-const {Country} = require('../db')
+const { Activity, Country } = require('../db');
 
-
-const postActivity = async (req, res)=>{
+const postActivity = async (req, res) => {
   try {
     const { name, difficulty, duration, season, countries } = req.body;
 
-    // Crear la actividad turística en la base de datos
-    if(!name||!difficulty||!duration||!season|!countries){
-        return res.status(400).json("Faltan Datos") 
+    // Verificar si la actividad ya existe
+    if (!name || !difficulty || !duration || !season || !countries) {
+      return res.status(400).json("Faltan Datos");
+    }
+    const existingActivity = await Activity.findOne({
+      where: {
+        name: name
       }
-    const findOne = await Activity.findOne({
-      where:{
-        name,difficulty,duration,season
-      },
-     
-    })
-
-    if(findOne){
-     return res.status(400).json('Ya existe esta actividad')
-    }
-
-
-
-const countryPromises = countries.map(async (id)=> {
-
-  const countryMatch = await Country.findOne({where:{id}})
-
-  return countryMatch
-})
-const matchedCountries = await Promise.all(countryPromises)
-
-console.log(matchedCountries );
-    const activity = await Activity.create({
-      name,
-      difficulty,
-      duration,
-      season,
-    
     });
- 
-      
-     
-    if (countries && countries.length > 0) {
 
+    if (existingActivity) {
+      // Verificar si las relaciones de países ya existen
+      const existingCountries = await existingActivity.getCountries({
+        where: {
+          id: countries
+        }
+      });
 
-      await activity.addCountry(matchedCountries.map((country)=>country.id))
+      if (existingCountries.length > 0) {
+        return res.status(400).json('Las relaciones de países ya existen para esta actividad');
+      }
+      // Agregar las nuevas relaciones de países
+      const newCountries = await Country.findAll({
+        where: {
+          id: countries
+        }
+      });
 
+      await existingActivity.addCountries(newCountries);
 
+      res.status(200).json(existingActivity);
+    } else {
+      // Crear una nueva actividad y agregar las relaciones de países
+      const newActivity = await Activity.create({
+        name,
+        difficulty,
+        duration,
+        season
+      });
+
+      const newCountries = await Country.findAll({
+        where: {
+          id: countries
+        }
+      });
+
+      await newActivity.addCountries(newCountries);
+
+      res.status(201).json(newActivity);
     }
-
-    res.status(201).json(activity);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+     res.status(500).json({ message: error.message });
+    throw error
   }
 };
 
-module.exports= postActivity
+module.exports = postActivity;
