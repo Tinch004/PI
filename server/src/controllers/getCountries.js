@@ -15,7 +15,7 @@ const getCountriesApi = async (req, res) => {
           capital: pais.capital ? pais.capital[0] : "No tiene capital",
           subregion: pais.subregion,
           area: pais.area ? pais.area : "no tiene area",
-          poblation: pais.population,
+          population: pais.population,
         };
         Country.findOrCreate({
                    
@@ -32,7 +32,7 @@ const getCountriesApi = async (req, res) => {
             capital: pais.capital ? pais.capital[0] : "No tiene capital",
             subregion: pais.subregion,
             area: pais.area ? pais.area : "no tiene area",
-            poblation: pais.population,
+            population: pais.population,
           }
 
       }

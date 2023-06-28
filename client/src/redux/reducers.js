@@ -4,17 +4,22 @@ import {
   CREATE_ACTIVITY,
   FILTER_BY_CONTINENT,
   FILTER_BY_ACTIVITY,
-  SORT_BY_NAME_ASC,
-  SORT_BY_NAME_DESC,
-  SORT_BY_POPULATION_ASC,
-  SORT_BY_POPULATION_DESC,
+  SORT_ACTION,
   GET_ACTIVITIES,
+  TRACK_FILTERS_CONTINENTS,
+  TRACK_FILTERS_ACTIVITIES,
+  TRACK_FILTERS_SORT,
 } from "./actions";
 
 const initialState = {
   countries: [],
   activities: [],
   filter: [],
+  filters: {
+    continent: "",
+    activity: "",
+    sort: "",
+  },
 };
 
 const reducer = (state = initialState, action) => {
@@ -28,7 +33,7 @@ const reducer = (state = initialState, action) => {
     case SEARCH_COUNTRIES:
       return {
         ...state,
-       
+
         filter: action.payload,
       };
     case CREATE_ACTIVITY:
@@ -44,42 +49,70 @@ const reducer = (state = initialState, action) => {
     case FILTER_BY_CONTINENT:
       return {
         ...state,
-        filter: action.payload,
+        filter: action.payload.length
+          ? state.filter.filter(
+              (country) => country.continents === action.payload
+            )
+          : [...state.filter],
+        filters: {
+          ...state.filters,
+          continent: action.payload,
+        },
       };
     case FILTER_BY_ACTIVITY:
       console.log(action.payload);
       return {
         ...state,
         filter: action.payload,
-       
       };
-    case SORT_BY_NAME_ASC:
+    case SORT_ACTION:
+      const sortBy = action.payload;
+
+      let sortedFilter = [...state.filter];
+
+      switch (sortBy) {
+        case "name-asc":
+          sortedFilter.sort((a, b) => a.name.localeCompare(b.name));
+          break;
+        case "name-desc":
+          sortedFilter.sort((a, b) => b.name.localeCompare(a.name));
+          break;
+        case "population-asc":
+          sortedFilter.sort((a, b) => a.population - b.population);
+          break;
+        case "population-desc":
+          sortedFilter.sort((a, b) => b.population - a.population);
+          break;
+        default:
+          break;
+      }
+
       return {
         ...state,
-      
-        filter: [...state.filter].sort((a, b) => a.name.localeCompare(b.name)),
+        filter: sortedFilter,
+        filters: {
+          ...state.filters,
+          sort: sortBy,
+        },
       };
-    case SORT_BY_NAME_DESC:
+
+    case TRACK_FILTERS_CONTINENTS:
       return {
         ...state,
-       
-        filter: [...state.filter].sort((a, b) => b.name.localeCompare(a.name)),
+        filters: { ...state.filters, continent: action.payload },
       };
-    case SORT_BY_POPULATION_ASC:
+
+    case TRACK_FILTERS_ACTIVITIES:
       return {
         ...state,
-       
-        filter: [...state.filter].sort(
-          (a, b) => a.poblation - b.poblation
-        ),
+        filters: { ...state.filters, activity: action.payload },
       };
-    case SORT_BY_POPULATION_DESC:
+    case TRACK_FILTERS_SORT:
       return {
-      ...state,
-        filter: [...state.filter].sort(
-          (a, b) => b.poblation - a.poblation
-        ),
+        ...state,
+        filters: { ...state.filters, sort: action.payload },
       };
+
     default:
       return state;
   }

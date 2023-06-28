@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 export const CREATE_ACTIVITY = "CREATE_ACTIVITY";
 export const GET_ACTIVITIES = "GET_ACTIVITIES";
@@ -6,10 +7,10 @@ export const GET_COUNTRIES = "GET_COUNTRIES";
 export const SEARCH_COUNTRIES = "SEARCH_COUNTRIES";
 export const FILTER_BY_CONTINENT = "FILTER_BY_CONTINENT";
 export const FILTER_BY_ACTIVITY = "FILTER_BY_ACTIVITY";
-export const SORT_BY_POPULATION_ASC = "SORT_BY_POPULATION_ASC";
-export const SORT_BY_POPULATION_DESC = "SORT_BY_POPULATION_DESC";
-export const SORT_BY_NAME_ASC = "SORT_BY_NAME_ASC";
-export const SORT_BY_NAME_DESC = "SORT_BY_NAME_DESC";
+export const SORT_ACTION = "SORT_ACTION";
+export const TRACK_FILTERS_CONTINENTS = "TRACK_FILTERS_CONTINENTS";
+export const TRACK_FILTERS_ACTIVITIES = "TRACK_FILTERS_ACTIVITIES";
+export const TRACK_FILTERS_SORT = "TRACK_FILTERS_SORT";
 
 // Acción para obtener todos los países
 export const getCountries = () => {
@@ -35,7 +36,7 @@ export const searchCountries = (name) => {
 
       dispatch({ type: SEARCH_COUNTRIES, payload: countries });
     } catch (error) {
-      throw new Error(`Error al buscar: ${error.message}`);
+    alert('Pais no encontrado');
     }
   };
 };
@@ -65,8 +66,6 @@ export const createActivity = (activityData) => {
 
       // Dispatch de la acción para agregar la actividad creada al estado
       dispatch({ type: CREATE_ACTIVITY, payload: createdActivity });
-
-      
     } catch (error) {
       console.log("Error al crear la actividad", error);
     }
@@ -79,60 +78,61 @@ export const filterByContinent = (continent) => {
   };
 };
 
-export const filterByActivity = (activityId, filter) => {
+export const filterByActivity = (activityId, filter, countries) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("http://localhost:3001/activities/activitiesCountries");
+      const response = await axios.get(
+        "http://localhost:3001/activities/activitiesCountries"
+      );
       const activitiesCountries = response.data;
-
-      const countryResponse = await axios.get("http://localhost:3001/countries");
-      const allCountries = countryResponse.data;
-
 
       // Filtrar los países relacionados a la actividad especificada
       const countriesFilter = [];
 
       for (const actividad of activitiesCountries) {
         if (actividad.ActivityId === activityId) {
-          const country = filter.find((country) => country.id === actividad.CountryId);
+          const country = countries.find(
+            (country) => country.id === actividad.CountryId
+          );
           if (country) {
             countriesFilter.push(country);
           }
         }
       }
 
-  console.log(countriesFilter);
-
-  dispatch({ type: FILTER_BY_ACTIVITY, payload: countriesFilter });
+      dispatch({ type: FILTER_BY_ACTIVITY, payload: countriesFilter });
     } catch (error) {
-      console.log("Error al obtener los países asociados a la actividad", error);
+      console.log(
+        "Error al obtener los países asociados a la actividad",
+        error
+      );
     }
   };
 };
 
-
-export const sortByNameAsc = () => {
+export const sortAction = (sort) => {
   return {
-    type: SORT_BY_NAME_ASC
+    type: SORT_ACTION,
+    payload: sort,
   };
 };
 
-export const sortByNameDesc = () => {
+export const trackFiltersContinents = (continent) => {
   return {
-    type: SORT_BY_NAME_DESC
+    type: TRACK_FILTERS_CONTINENTS,
+    payload: continent,
   };
 };
 
-export const sortByPopulationAsc = () => {
+export const trackFiltersActivities = (activity) => {
   return {
-    type: SORT_BY_POPULATION_ASC
+    type: TRACK_FILTERS_ACTIVITIES,
+    payload: activity,
   };
 };
-
-export const sortByPopulationDesc = () => {
+export const trackFiltersSort = (sort) => {
   return {
-    type: SORT_BY_POPULATION_DESC
+    type: TRACK_FILTERS_SORT,
+    payload: sort,
   };
 };
-
-

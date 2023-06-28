@@ -1,5 +1,6 @@
 const {Activity} = require('../db')
-const {ActivityCountries} = require('../db')
+const {Country} = require('../db')
+
 
 const postActivity = async (req, res)=>{
   try {
@@ -12,14 +13,25 @@ const postActivity = async (req, res)=>{
     const findOne = await Activity.findOne({
       where:{
         name,difficulty,duration,season
-      }
+      },
+     
     })
-    
+
     if(findOne){
      return res.status(400).json('Ya existe esta actividad')
     }
-   
 
+
+
+const countryPromises = countries.map(async (id)=> {
+
+  const countryMatch = await Country.findOne({where:{id}})
+
+  return countryMatch
+})
+const matchedCountries = await Promise.all(countryPromises)
+
+console.log(matchedCountries );
     const activity = await Activity.create({
       name,
       difficulty,
@@ -31,16 +43,10 @@ const postActivity = async (req, res)=>{
       
      
     if (countries && countries.length > 0) {
-      countries.map(async countryId  => {
 
-     
-     await ActivityCountries.create({
-            CountryId: countryId,
-            ActivityId: activity.id
-          
-       
-        });
-      });
+
+      await activity.addCountry(matchedCountries.map((country)=>country.id))
+
 
     }
 

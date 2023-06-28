@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import styles from "./CountryCard.module.css";
 
-const CountryCard = ({ id, name, flagImage, continents, poblation }) => {
+const CountryCard = ({ id, name, flagImage, continents, population }) => {
   return (
     <div className={styles.container}>
       <NavLink to={`/detail/${id}`} className={styles.navlink}>
@@ -11,7 +11,7 @@ const CountryCard = ({ id, name, flagImage, continents, poblation }) => {
           <div className={styles.textContainer}>
             <h3>{name}</h3>
             <p>{continents}</p>
-            <p>{poblation}</p>
+            <p>{population}</p>
           </div>
         </div>
       </NavLink>

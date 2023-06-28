@@ -34,7 +34,7 @@ module.exports = (sequelize) => {
         type: DataTypes.FLOAT,
         allowNull: true,
       },
-      poblation: {
+      population: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },

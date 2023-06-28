@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import CountryCard from "../CountryCard/CountryCard";
 import styles from "./Cards.module.css";
@@ -52,6 +52,10 @@ const Cards = ({ countries }) => {
 
   const goToPage = (pageNumber) => setCurrentPage(pageNumber);
 
+  useEffect(() => {
+    setCurrentPage(1); // Reiniciar la página a 1 cuando el arreglo de países cambie
+  }, [countries]);
+
   return (
     <div className={styles.cards}>
       <div className={styles.container}>
@@ -62,7 +66,7 @@ const Cards = ({ countries }) => {
             name={country.name}
             flagImage={country.flagImage}
             continents={country.continents}
-            poblation={country.poblation}
+            population={country.population}
           />
         ))}
       </div>

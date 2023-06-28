@@ -178,20 +178,23 @@ const CreateActivityForm = () => {
           Select Countries:
           <div className={styles.countryList}>
             <div className={styles.countryListScroll}>
-              <div  className={styles.checkboxContainer}>{countries.map((country) => (
-                <label key={country.id}>
-                  
-                  <input
-                    type="checkbox"
-                    name="countries"
-                    value={country.id}
-                    checked={activityData.countries.includes(country.id)}
-                    onChange={() => handleCountrySelect(country.id)}
-                    className={styles.checkboxInput}
-                  />
-                  {country.name}
-                </label>
-              ))}</div>
+              <div className={styles.checkboxContainer}>
+                {countries
+                  .sort((a, b) => a.name.localeCompare(b.name))
+                  .map((country) => (
+                    <label key={country.id}>
+                      <input
+                        type="checkbox"
+                        name="countries"
+                        value={country.id}
+                        checked={activityData.countries.includes(country.id)}
+                        onChange={() => handleCountrySelect(country.id)}
+                        className={styles.checkboxInput}
+                      />
+                      {country.name}
+                    </label>
+                  ))}
+              </div>
             </div>
           </div>
           {validationErrors.countries && (

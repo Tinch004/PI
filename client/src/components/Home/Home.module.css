@@ -8,7 +8,7 @@
   justify-content: flex-start;
   background-color: rgba(0, 0, 0, 0.548);
    width: 100%;
-   overflow: hidden; 
+   overflow-x: hidden; 
 }
 
 .container {
