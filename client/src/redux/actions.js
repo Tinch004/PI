@@ -41,7 +41,7 @@ export const searchCountries = (name) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/countries/name?name=${name}`
+        `https://countries-zm80.onrender.com/countries/name?name=${name}`
       );
       const countries = response.data;
       console.log(response);
@@ -60,7 +60,9 @@ export const resetPageNumber = () => {
 export const getActivities = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("http://localhost:3001/activities");
+      const response = await axios.get(
+        "https://countries-zm80.onrender.com/activities"
+      );
       const activities = response.data;
 
       dispatch({ type: GET_ACTIVITIES, payload: activities });
@@ -75,7 +77,7 @@ export const createActivity = (activityData) => {
     try {
       // Crear la actividad en la base de datos
       const response = await axios.post(
-        "http://localhost:3001/activities",
+        "https://countries-zm80.onrender.com/activities",
         activityData
       );
       const createdActivity = response.data;
@@ -98,7 +100,7 @@ export const filterByActivity = (activityId, filter, countries) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        "http://localhost:3001/activities/activitiesCountries"
+        "https://countries-zm80.onrender.com/activities/activitiesCountries"
       );
       const activitiesCountries = response.data;
 
