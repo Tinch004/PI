@@ -4,37 +4,34 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 
-
 const Detail = () => {
   const { id } = useParams();
 
-  
-
   const [countryDetail, setCountryDetail] = useState([]);
 
-
-
-  
   useEffect(() => {
-    axios(`http://localhost:3001/countries/${id}`).then(({ data }) => {
-      data.name ? setCountryDetail(data) : window.alert("No Country Found");
-    });
+    axios(`https://countries-zm80.onrender.com/countries/${id}`).then(
+      ({ data }) => {
+        data.name ? setCountryDetail(data) : window.alert("No Country Found");
+      }
+    );
   }, [id]);
 
-
-  
-
-  if (countryDetail.length===0) {
-    return(<div className={style.containerError}>
-      <div className={style.cuadrado}> <h1 className={style.errorCode}>404</h1>
-      <p className={style.errorMessage}>Country not found</p>
-      <div className={style.buttonContainer}>
-        <NavLink to="/home">
-          <button className={style.backButton}>Volver</button>
-        </NavLink>
-      </div></div>
-     
-    </div>)
+  if (countryDetail.length === 0) {
+    return (
+      <div className={style.containerError}>
+        <div className={style.cuadrado}>
+          {" "}
+          <h1 className={style.errorCode}>404</h1>
+          <p className={style.errorMessage}>Country not found</p>
+          <div className={style.buttonContainer}>
+            <NavLink to="/home">
+              <button className={style.backButton}>Volver</button>
+            </NavLink>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   const {
@@ -53,7 +50,6 @@ const Detail = () => {
 
   return (
     <div className={style.detailPage}>
-  
       <div className={style.countryInfo}>
         <h1 className={style.countryName}>{name}</h1>
         <div className={style.countryInfoItem}>
@@ -73,7 +69,9 @@ const Detail = () => {
         </div>
       )}
       <div className={style.activitiesContainer}>
-        {!Activities?<h1>Not Activities</h1>: (
+        {!Activities ? (
+          <h1>Not Activities</h1>
+        ) : (
           <div className={style.activities}>
             {Activities.map((a) => (
               <div className={style.activityItem} key={a.id}>
