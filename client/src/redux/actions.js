@@ -18,7 +18,9 @@ export const RESETPAGE = "RESETPAGE";
 export const getCountries = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("http://localhost:3001/countries");
+      const response = await axios.get(
+        "https://countries-zm80.onrender.com/countries"
+      );
       const countries = response.data;
 
       dispatch({ type: GET_COUNTRIES, payload: countries });
