@@ -9,6 +9,7 @@ import {
   TRACK_FILTERS_CONTINENTS,
   TRACK_FILTERS_ACTIVITIES,
   TRACK_FILTERS_SORT,
+  SET_CURRENT_PAGE,
 } from "./actions";
 
 const initialState = {
@@ -20,6 +21,7 @@ const initialState = {
     activity: "",
     sort: "",
   },
+  currentPage: 1,
 };
 
 const reducer = (state = initialState, action) => {
@@ -60,7 +62,6 @@ const reducer = (state = initialState, action) => {
         },
       };
     case FILTER_BY_ACTIVITY:
-
       return {
         ...state,
         filter: action.payload,
@@ -111,6 +112,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         filters: { ...state.filters, sort: action.payload },
+      };
+
+    case SET_CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.payload,
       };
 
     default:

@@ -1,0 +1,26 @@
+/* PaginadoGlobal.module.css */
+
+.paginationContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.paginationButton {
+  padding: 8px 16px;
+  margin: 0 2px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.activePaginationButton {
+  background-color: #3182ce;
+  color: #fff;
+}
+
+.disabledPaginationButton {
+  background-color: #ccc;
+  color: #888;
+  cursor: not-allowed;
+}

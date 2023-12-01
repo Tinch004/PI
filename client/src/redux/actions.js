@@ -11,6 +11,8 @@ export const SORT_ACTION = "SORT_ACTION";
 export const TRACK_FILTERS_CONTINENTS = "TRACK_FILTERS_CONTINENTS";
 export const TRACK_FILTERS_ACTIVITIES = "TRACK_FILTERS_ACTIVITIES";
 export const TRACK_FILTERS_SORT = "TRACK_FILTERS_SORT";
+export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+export const RESETPAGE = "RESETPAGE";
 
 // Acción para obtener todos los países
 export const getCountries = () => {
@@ -26,6 +28,13 @@ export const getCountries = () => {
   };
 };
 
+export const setCurrentPage = (pageNum) => {
+  return {
+    type: SET_CURRENT_PAGE,
+    payload: pageNum,
+  };
+};
+
 export const searchCountries = (name) => {
   return async (dispatch) => {
     try {
@@ -33,12 +42,17 @@ export const searchCountries = (name) => {
         `http://localhost:3001/countries/name?name=${name}`
       );
       const countries = response.data;
+      console.log(response);
 
       dispatch({ type: SEARCH_COUNTRIES, payload: countries });
     } catch (error) {
-    alert('Pais no encontrado');
+      alert("Pais no encontrado");
     }
   };
+};
+
+export const resetPageNumber = () => {
+  dispatc({ type: RESETPAGE, payload: 1 });
 };
 
 export const getActivities = () => {
