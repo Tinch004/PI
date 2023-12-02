@@ -11,7 +11,7 @@ const Detail = () => {
   const [countryDetail, setCountryDetail] = useState([]);
 
   useEffect(() => {
-    axios(`hVITE_BACKEND_URL/${id}`).then(({ data }) => {
+    axios(`${VITE_BACKEND_URL}/countries/${id}`).then(({ data }) => {
       data.name ? setCountryDetail(data) : window.alert("No Country Found");
     });
   }, [id]);
