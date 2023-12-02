@@ -6,15 +6,14 @@ import { Link, NavLink } from "react-router-dom";
 
 const Detail = () => {
   const { id } = useParams();
+  const VITE_BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
   const [countryDetail, setCountryDetail] = useState([]);
 
   useEffect(() => {
-    axios(`https://countries-zm80.onrender.com/countries/${id}`).then(
-      ({ data }) => {
-        data.name ? setCountryDetail(data) : window.alert("No Country Found");
-      }
-    );
+    axios(`hVITE_BACKEND_URL/${id}`).then(({ data }) => {
+      data.name ? setCountryDetail(data) : window.alert("No Country Found");
+    });
   }, [id]);
 
   if (countryDetail.length === 0) {
