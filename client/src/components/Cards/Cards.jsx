@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setCurrentPage } from "../../redux/actions";
 import CountryCard from "../CountryCard/CountryCard";
 import styles from "./Cards.module.css";
-import PaginadoGlobal from "../PaginadoGlobal/Paginadoglobal";
+import PaginadoGlobal from "../PaginadoGlobal/PaginadoGlobal";
 
 const Cards = ({ countries }) => {
   const currentPage = useSelector((state) => state.currentPage);
