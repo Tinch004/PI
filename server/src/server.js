@@ -27,7 +27,7 @@ server.use(express.static(path.join(__dirname, "..", "client")));
 
 // Configura una ruta para todas las demás solicitudes, sirviendo el archivo index.html
 server.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "client", "index.html"));
+  res.sendFile(path.resolve(__dirname, "..", "..", "client", "index.html"));
 });
 
 const PORT = process.env.PORT || 3000;
