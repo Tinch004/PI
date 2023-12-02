@@ -22,14 +22,6 @@ server.use(history());
 
 server.use(router);
 
-// Sirve los archivos estáticos desde la carpeta "client" que está un nivel atrás del "server"
-server.use(express.static(path.join(__dirname, "..", "client")));
-
-// Configura una ruta para todas las demás solicitudes, sirviendo el archivo index.html
-server.get("*", (req, res) => {
-  res.redirect("/");
-});
-
 const PORT = process.env.PORT || 3000;
 
 server.listen(PORT, () => {
