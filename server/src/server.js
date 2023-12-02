@@ -14,8 +14,6 @@ server.use(
   })
 );
 
-server.use(history());
-
 server.use(router);
 
 module.exports = server;
