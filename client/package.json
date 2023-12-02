@@ -18,7 +18,8 @@
     "react-router-config": "^5.1.1",
     "react-router-dom": "^6.13.0",
     "redux": "^4.2.1",
-    "redux-thunk": "^2.4.2"
+    "redux-thunk": "^2.4.2",
+    "serve": "^14.2.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
