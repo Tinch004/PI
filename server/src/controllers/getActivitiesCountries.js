@@ -1,14 +1,13 @@
-const {ActivityCountries} = require('../db')
+const { ActivityCountries } = require("../db").default;
 
+const getActivityCountries = async (req, res) => {
+  try {
+    const activitiesCountries = await ActivityCountries.findAll();
 
-const getActivityCountries= async(req, res)=>{
-    try {
-        const activitiesCountries = await ActivityCountries.findAll();
+    res.status(200).json(activitiesCountries);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
-        res.status(200).json(activitiesCountries);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-}
-
-module.exports= getActivityCountries
+module.exports = getActivityCountries;

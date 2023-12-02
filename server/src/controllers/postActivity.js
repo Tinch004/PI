@@ -1,4 +1,4 @@
-const { Activity, Country } = require('../db');
+const { Activity, Country } = require("../db").default;
 
 const postActivity = async (req, res) => {
   try {
@@ -10,26 +10,28 @@ const postActivity = async (req, res) => {
     }
     const existingActivity = await Activity.findOne({
       where: {
-        name: name
-      }
+        name: name,
+      },
     });
 
     if (existingActivity) {
       // Verificar si las relaciones de países ya existen
       const existingCountries = await existingActivity.getCountries({
         where: {
-          id: countries
-        }
+          id: countries,
+        },
       });
 
       if (existingCountries.length > 0) {
-        return res.status(400).json('Las relaciones de países ya existen para esta actividad');
+        return res
+          .status(400)
+          .json("Las relaciones de países ya existen para esta actividad");
       }
       // Agregar las nuevas relaciones de países
       const newCountries = await Country.findAll({
         where: {
-          id: countries
-        }
+          id: countries,
+        },
       });
 
       await existingActivity.addCountries(newCountries);
@@ -41,13 +43,13 @@ const postActivity = async (req, res) => {
         name,
         difficulty,
         duration,
-        season
+        season,
       });
 
       const newCountries = await Country.findAll({
         where: {
-          id: countries
-        }
+          id: countries,
+        },
       });
 
       await newActivity.addCountries(newCountries);
@@ -55,8 +57,8 @@ const postActivity = async (req, res) => {
       res.status(201).json(newActivity);
     }
   } catch (error) {
-     res.status(500).json({ message: error.message });
-    throw error
+    res.status(500).json({ message: error.message });
+    throw error;
   }
 };
 

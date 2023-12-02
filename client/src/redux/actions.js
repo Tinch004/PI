@@ -13,14 +13,13 @@ export const TRACK_FILTERS_ACTIVITIES = "TRACK_FILTERS_ACTIVITIES";
 export const TRACK_FILTERS_SORT = "TRACK_FILTERS_SORT";
 export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 export const RESETPAGE = "RESETPAGE";
+const VITE_BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 // Acción para obtener todos los países
 export const getCountries = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(
-        "https://countries-zm80.onrender.com/countries"
-      );
+      const response = await axios.get(`${VITE_BACKEND_URL}/countries`);
       const countries = response.data;
 
       dispatch({ type: GET_COUNTRIES, payload: countries });
@@ -41,7 +40,7 @@ export const searchCountries = (name) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        `https://countries-zm80.onrender.com/countries/name?name=${name}`
+        `${VITE_BACKEND_URL}/countries/name?name=${name}`
       );
       const countries = response.data;
       console.log(response);
@@ -60,9 +59,7 @@ export const resetPageNumber = () => {
 export const getActivities = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(
-        "https://countries-zm80.onrender.com/activities"
-      );
+      const response = await axios.get(`${VITE_BACKEND_URL}/activities`);
       const activities = response.data;
 
       dispatch({ type: GET_ACTIVITIES, payload: activities });
@@ -77,7 +74,7 @@ export const createActivity = (activityData) => {
     try {
       // Crear la actividad en la base de datos
       const response = await axios.post(
-        "https://countries-zm80.onrender.com/activities",
+        `${VITE_BACKEND_URL}/activities`,
         activityData
       );
       const createdActivity = response.data;
@@ -100,7 +97,7 @@ export const filterByActivity = (activityId, filter, countries) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        "https://countries-zm80.onrender.com/activities/activitiesCountries"
+        `${VITE_BACKEND_URL}/activities/activitiesCountries`
       );
       const activitiesCountries = response.data;
 
