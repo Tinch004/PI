@@ -49,7 +49,6 @@ const Home = () => {
       if (filters.activity) {
         await dispatch(filterByActivity(filters.activity, filter, countries));
       }
-    
 
       await dispatch(sortAction(filters.sort));
       await dispatch(filterByContinent(event.target.value));
@@ -103,15 +102,13 @@ const Home = () => {
         <div>
           <div className={styles.filters}>
             <div className={styles.filter}>
-              <label htmlFor="activity-filter" className={styles.label}>
-                Filtrar por actividad:
-              </label>
+              <label htmlFor="activity-filter" className={styles.label}></label>
               <select
                 id="activity-filter"
                 className={styles.select}
                 onChange={handleFilterActivities}
               >
-                <option value="">Todos los países</option>
+                <option value="">Todas las actividades</option>
                 {activities.map((activity) => (
                   <option key={activity.id} value={activity.id}>
                     {activity.name}
@@ -121,9 +118,10 @@ const Home = () => {
             </div>
 
             <div className={styles.filter}>
-              <label htmlFor="continent-filter" className={styles.label}>
-                Filtrar por continente:
-              </label>
+              <label
+                htmlFor="continent-filter"
+                className={styles.label}
+              ></label>
               <select
                 id="continent-filter"
                 className={styles.select}
@@ -140,9 +138,7 @@ const Home = () => {
             </div>
 
             <div className={styles.filter}>
-              <label htmlFor="sort-by" className={styles.label}>
-                Ordenar por:
-              </label>
+              <label htmlFor="sort-by" className={styles.label}></label>
               <select
                 id="sort-by"
                 className={styles.select}

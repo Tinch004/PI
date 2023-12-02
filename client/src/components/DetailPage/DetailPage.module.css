@@ -63,7 +63,6 @@
   overflow-y: auto; /* Agregado el scroll solo para la sección de actividades */
 }
 
-
 .activityItem {
   margin-bottom: 10px;
 }
@@ -102,9 +101,6 @@
   background-color: #276bd8;
 }
 
-
-
-
 .containerError {
   display: flex;
   flex-direction: column;
@@ -114,7 +110,7 @@
   font-family: Arial, sans-serif;
   background-size: cover;
   background-position: center;
-  background-image: url('.././Home/countries.png');
+  background-image: url(".././Home/countries.png");
 }
 
 .errorCode {
@@ -123,9 +119,7 @@
   margin-bottom: 20px;
 }
 
-.cuadrado{
-  
-
+.cuadrado {
   background-color: rgb(255, 255, 255);
   padding: 20px;
   padding-left: 20px;
@@ -133,7 +127,6 @@
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   justify-content: center;
-
 }
 
 .errorMessage {
@@ -147,17 +140,97 @@
 
 .backButton {
   margin-top: 10px;
-padding: 12px 20px;
-background-color: #4287f5;
-color: #fff;
-font-size: 16px;
-border: none;
-border-radius: 4px;
-cursor: pointer;
-width: 100%;
-text-align: center;
+  padding: 12px 20px;
+  background-color: #4287f5;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
 }
 
 .backButton:hover {
   background-color: #1f6feb;
+}
+
+.detailPage {
+  display: flex;
+  flex-direction: column; /* Cambiado a columna en dispositivos móviles */
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 20px;
+  padding-left: 20px; /* Cambiado a 20px para dispositivos móviles */
+}
+
+.container {
+  display: flex;
+  flex-direction: column; /* Cambiado a columna en dispositivos móviles */
+  align-items: center;
+  justify-content: center;
+  max-width: 100%; /* Cambiado a 100% para dispositivos móviles */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Estilos para la sección de información del país */
+.countryInfo {
+  flex: 1;
+  margin: 0; /* Eliminado el margen derecho en dispositivos móviles */
+}
+
+.countryName {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.flagContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+}
+
+.flagImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  padding-right: 0; /* Eliminado el relleno derecho en dispositivos móviles */
+}
+
+/* Estilos para la sección de actividades */
+.activitiesContainer {
+  flex: 1;
+  overflow-y: auto;
+  max-height: none; /* Eliminado el límite de altura en dispositivos móviles */
+  margin-left: 0; /* Eliminado el margen izquierdo en dispositivos móviles */
+  padding-left: 20px; /* Añadido el relleno izquierdo en dispositivos móviles */
+  border-left: none; /* Eliminado el borde izquierdo en dispositivos móviles */
+}
+
+.activities {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 20px;
+  overflow-y: auto; /* Agregado el scroll solo para la sección de actividades */
+}
+
+/* Consulta de medios para dispositivos móviles */
+@media screen and (max-width: 600px) {
+  .flagImage {
+    padding-right: 0; /* Puedes ajustar según sea necesario para dispositivos más pequeños */
+  }
+
+  .activitiesContainer {
+    padding-left: 20px;
+  }
+
+  .container {
+    padding-left: 20px;
+  }
 }
