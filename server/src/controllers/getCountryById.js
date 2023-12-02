@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const { Country, Activity } = require("../db").default;
+const { Country, Activity } = require("../db");
 
 const getCountryById = async (req, res) => {
   try {

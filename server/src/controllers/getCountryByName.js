@@ -1,4 +1,4 @@
-const { Country } = require("../db").default;
+const { Country } = require("../db");
 const { Op } = require("sequelize");
 
 const getCountryByName = async (req, res) => {
@@ -20,12 +20,10 @@ const getCountryByName = async (req, res) => {
     if (countries.length > 0) {
       res.status(200).json(countries);
     } else {
-      res
-        .status(404)
-        .json({
-          message:
-            "No se encontraron países que coincidan con el nombre proporcionado",
-        });
+      res.status(404).json({
+        message:
+          "No se encontraron países que coincidan con el nombre proporcionado",
+      });
     }
   } catch (error) {
     res.status(500).json({ message: error.message });

@@ -1,4 +1,4 @@
-const { ActivityCountries } = require("../db").default;
+const { ActivityCountries } = require("../db");
 
 const getActivityCountries = async (req, res) => {
   try {

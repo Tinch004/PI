@@ -1,4 +1,4 @@
-const { Activity, Country } = require("../db").default;
+const { Activity, Country } = require("../db");
 
 const postActivity = async (req, res) => {
   try {

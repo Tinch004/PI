@@ -1,4 +1,4 @@
-const { Activity } = require("../db").default;
+const { Activity } = require("../db");
 
 const getAllActivities = async (req, res) => {
   try {

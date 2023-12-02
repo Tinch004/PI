@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { Country } = require("../db").default;
+const { Country } = require("../db");
 
 const getCountriesApi = async (req, res) => {
   try {
